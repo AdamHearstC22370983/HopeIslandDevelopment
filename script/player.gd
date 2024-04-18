@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-<<<<<<< HEAD
 var health = 100
 var player_alive = true
 var attack_in_progress = false
@@ -9,15 +8,11 @@ var enemy_attack_cooldown = true
 
 const speed = 100
 var current_dir = "none"
-=======
-var speed = 100
->>>>>>> 9add64083822397e6a9b93048c9866a2af75d24c
 
 var playerState #variable for which sprite to use
 
 #movement function
 func _physics_process(delta):
-<<<<<<< HEAD
 	player_movement(delta)
 	enemy_attack()
 	
@@ -26,9 +21,8 @@ func _physics_process(delta):
 		health = 0
 		print("You have fallen...")
 		self.queue_free() #change this to transition to an end screen
-=======
+		
 	var direction = Input.get_vector("left", "right", "up", "down") #variable that takes in keyboard input
->>>>>>> 9add64083822397e6a9b93048c9866a2af75d24c
 	
 	# idle state
 	if direction.x == 0 and direction.y == 0:
@@ -39,13 +33,8 @@ func _physics_process(delta):
 	velocity = direction * speed
 	move_and_slide()
 	
-	play_anim(direction, playerState)
+	#play_anim(direction, playerState)
 	
-func play_anim(dir, state):
-	if state == "Idle":
-		$AnimatedSprite2D.play("Idle")
-		
-<<<<<<< HEAD
 func play_anim(movement):
 	var dir = current_dir
 	var anim = $AnimatedSprite2D
@@ -96,26 +85,3 @@ func enemy_attack():
 		
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
-=======
-	if state == "walking":
-		if dir.y == -1:
-			$AnimatedSprite2D.play("N-walk")
-		if dir.x == 1:
-			$AnimatedSprite2D.play("E-walk")
-		if dir.x == -1:
-			$AnimatedSprite2D.play("W-walk")
-		if dir.y == 1:
-			$AnimatedSprite2D.play("S-walk")
-
-		if dir.x > 0.5 and dir.y < -0.5:
-			$AnimatedSprite2D.play("NE-walk")
-		if dir.x > 0.5 and dir.y > 0.5:
-			$AnimatedSprite2D.play("SE-walk")
-		if dir.x < -0.5 and dir.y > 0.5:
-			$AnimatedSprite2D.play("SW-walk")
-		if dir.x < -0.5 and dir.y < -0.5:
-			$AnimatedSprite2D.play("NW-walk")
-	
-func player():
-	pass
->>>>>>> 9add64083822397e6a9b93048c9866a2af75d24c
